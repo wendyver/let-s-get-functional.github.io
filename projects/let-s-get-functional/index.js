@@ -61,7 +61,18 @@ var youngestCustomer = function(array) {
             return youngest["name"];
 };
 
-var averageBalance;
+var averageBalance = function(customers) {
+    var totalBalance = customers.reduce(function(acc, customer) {
+      var balanceString = customer.balance;
+      balanceString = balanceString.replace("$", "").replace(",", "");
+      var balance = Number(balanceString);
+      return acc + balance;
+    }, 0);
+    var average = totalBalance / customers.length;
+    return average;
+  };
+  
+  console.log(averageBalance(arr));
 
 var firstLetterCount;
 
