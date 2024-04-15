@@ -71,9 +71,9 @@ var averageBalance = function(customers) {
     var average = totalBalance / customers.length;
     return average;
   };
-  
+  /*
   console.log(averageBalance(arr));
-
+*/
 var firstLetterCount;
 
 var friendFirstLetterCount;
