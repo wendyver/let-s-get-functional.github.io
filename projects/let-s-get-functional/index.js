@@ -74,7 +74,17 @@ var averageBalance = function(customers) {
   /*
   console.log(averageBalance(arr));
 */
-var firstLetterCount;
+var firstLetterCount (data, letter) {
+    letter.toLowerCase();
+    const count = data.reduce((acc, current => {
+        const firstLetter = item.current.charAt(0).toLowerCase();
+        if (firstLetter === letter) {
+            acc++
+        }
+        return acc;
+    }, 0));
+    return count;
+};
 
 var friendFirstLetterCount;
 
