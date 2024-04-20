@@ -86,9 +86,35 @@ var firstLetterCount (data, letter) {
     return count;
 };
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(data, customerName, letter) {
+    const customer = data.find(item => item.name === customerName);
+    if (!customer) {
+        return 0;
+    }
+    letter = letter.toLowerCase();
+    const count = customer.friends.reduce((acc, current) {
+        const firstLetter = current.name.charAt(0).toLowerCase();
+        if (firstLetter === letter) {
+            acc++;
+        }
+        return acc;
+    }, 0);
+    return count;
+};
 
-var friendsCount;
+var friendsCount = function(data, customerName) {
+    const customer = data.find(item => item.name === customerName);
+    if (!custome) {
+        return [];
+    }
+    const friends = data.reduce((acc, item) => {
+        const isFriend = item.friends.some(friend => friend.name === customerName);
+        if (isFriend) {
+            acc.push(item.name)
+        }
+        return acc;
+    }, []);
+};
 
 var topThreeTags;
 
