@@ -104,7 +104,7 @@ var friendFirstLetterCount = function(data, customerName, letter) {
 
 var friendsCount = function(data, customerName) {
     const customer = data.find(item => item.name === customerName);
-    if (!custome) {
+    if (!customer) {
         return [];
     }
     const friends = data.reduce((acc, item) => {
@@ -116,7 +116,14 @@ var friendsCount = function(data, customerName) {
     }, []);
 };
 
-var topThreeTags;
+var topThreeTags = function(data) {
+    const tagFreq = {};
+    data.forEach(customer => {
+        customer.tags.forEach(tag => {
+        tagFreq[tag] = (tagFreq[tag] || 0) + 1;
+    });
+});
+};
 
 var genderCount;
 
