@@ -74,25 +74,32 @@ var averageBalance = function(customers) {
   /*
   console.log(averageBalance(arr));
 */
-var firstLetterCount (data, letter) {
-    letter.toLowerCase();
-    const count = data.reduce((acc, current => {
-        const firstLetter = item.current.charAt(0).toLowerCase();
+var firstLetterCount = function(data, letter) {
+    // Convert the letter to lowercase
+    letter = letter.toLowerCase();
+    
+    // Use the reduce method to count the number of names that start with the given letter
+    const count = data.reduce((acc, current) => {
+        // Extract the first letter of the current customer's name and convert it to lowercase
+        const firstLetter = current.name.charAt(0).toLowerCase();
+        
+        // If the first letter matches the given letter, increment the count
         if (firstLetter === letter) {
-            acc++
+            acc++;
         }
         return acc;
-    }, 0));
+    }, 0);
     return count;
 };
-
+        
+        
 var friendFirstLetterCount = function(data, customerName, letter) {
     const customer = data.find(item => item.name === customerName);
     if (!customer) {
         return 0;
     }
     letter = letter.toLowerCase();
-    const count = customer.friends.reduce((acc, current) {
+    const count = customer.friends.reduce((acc, current) => {
         const firstLetter = current.name.charAt(0).toLowerCase();
         if (firstLetter === letter) {
             acc++;
@@ -114,16 +121,31 @@ var friendsCount = function(data, customerName) {
         }
         return acc;
     }, []);
+    return friends;
 };
 
-var topThreeTags = function(data) {
+function topThreeTags(data) {
+    // Create an empty object to store tag frequencies
     const tagFreq = {};
+
+    // Iterate over each customer's tags and count the frequency of each tag
     data.forEach(customer => {
         customer.tags.forEach(tag => {
-        tagFreq[tag] = (tagFreq[tag] || 0) + 1;
+            tagFreq[tag] = (tagFreq[tag] || 0) + 1;
+        });
     });
-});
-};
+
+    // Convert tagFreq object into an array of [tag, frequency] pairs
+    const tagFreqArray = Object.entries(tagFreq);
+
+    // Sort the tag-frequency pairs based on frequency in descending order
+    tagFreqArray.sort((a, b) => b[1] - a[1]);
+
+    // Extract the top three tags
+    const topThreeTags = tagFreqArray.slice(0, 3).map(pair => pair[0]);
+
+    return topThreeTags;
+}
 
 var genderCount = function(data) {
     return data.reduce(function(acc, curr) {
